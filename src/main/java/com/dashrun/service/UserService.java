@@ -41,8 +41,11 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid Request.");
         }   
 
-        List<User> allUsers = userRepository.findAll();
-        if(!allUsers.isEmpty()) {
+        User allAdmin = userRepository.findFirstByRole("admin").orElse(null);
+
+
+
+        if(allAdmin != null) {
 
             User admin = userRepository.findFirstByToken(token).orElseThrow(() -> new 
                 ResponseStatusException(HttpStatus.FORBIDDEN,"Request not allowed"));

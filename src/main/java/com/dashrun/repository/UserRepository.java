@@ -9,4 +9,5 @@ import com.dashrun.entity.User;
 public interface UserRepository extends JpaRepository<User, String> {
 
     Optional<User> findFirstByToken(String token);
+    Optional<User> findFirstByRole(String token);
 }
