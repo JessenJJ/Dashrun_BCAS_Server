@@ -20,6 +20,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    //#########################################################################################
     @PostMapping(
         path =  "/api/users",
         consumes = MediaType.APPLICATION_JSON_VALUE,
@@ -37,6 +38,7 @@ public class UserController {
 
         return WebResponse.<UserResponse>builder().data(userResponse).errors(null).build();
     } 
+    //#########################################################################################
 
     // public ResponseEntity<UserResponse> register(@RequestBody RegisterUserRequest request) {
     //     return ResponseEntity.status(HttpStatus.CREATED).body(userService.register(request));
@@ -52,6 +54,7 @@ public class UserController {
 
         return WebResponse.<LoginResponse>builder().data(response).errors(null).build();
     }
+    //#########################################################################################
 
     @PostMapping(
         path =  "/api/logout"
@@ -61,5 +64,6 @@ public class UserController {
 
         return WebResponse.<String>builder().data("Log out success").errors(null).build();
     }
+    
     
 }

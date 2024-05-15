@@ -49,7 +49,7 @@ public class UserService {
 
             User admin = userRepository.findFirstByToken(token).orElseThrow(() -> new 
                 ResponseStatusException(HttpStatus.FORBIDDEN,"Request not allowed"));
-            if (!admin.getRole().equals("admin")) {
+            if (!admin.getRole().equals("ROLE_GET_SUPER_ADMIN")) {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN,"Request not allowed");
             }
         }
@@ -72,6 +72,7 @@ public class UserService {
         user.setPassword(BCrypt.hashpw(request.getPassword(), BCrypt.gensalt()));
         user.setName(request.getName());
         user.setRole(request.getRole());
+        user.setStatus(request.getStatus());
 
         userRepository.save(user);
 

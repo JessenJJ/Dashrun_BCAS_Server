@@ -22,7 +22,16 @@ public class User {
     private String password;
     private String role;
     private String token;
+    private String status;
 
     @Column(name = "token_expired_at")
     private Long tokenExpiredAt;
+
+    @CreationTimeStamp
+    @Column(name="created_at")
+    private Instant created_at;
+
+    @UpdateTimeStamp
+    @Column(name="updated_at")
+    private Instant updated_at;
 }
